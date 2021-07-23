@@ -21,20 +21,20 @@ const Login = (...props) => {
   
   return (
     <>
-        <ContainerButton>
-            <Button buttonStyle='error' onClick={(event) => entrar()}>
+      <ContainerButton>  
+          <Button buttonStyle='error' onClick={(event) => entrar()}>
                 {' '}Entrar{' '}
-            </Button>
-            <Button onClick={(event) => criarConta()}>
+          </Button>
+          <Button onClick={(event) => criarConta()}>
                 {' '}Criar conta{' '}
-            </Button>
-        </ContainerButton>
+          </Button>
+      </ContainerButton>
       <Container>
         <Img {...props} right={imgPosition}  src="http://placeimg.com/640/480/food"/>
 
-        <ContainerSingIn>
+        {/* <ContainerSingIn>
             <SingnIn/>
-        </ContainerSingIn>
+        </ContainerSingIn> */}
         
         <ContainerSingUp>
           <SingnUp/>

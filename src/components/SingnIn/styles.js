@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Form } from 'formik';
 
 export const Container = styled.div`
     width: 320px;
@@ -6,7 +7,7 @@ export const Container = styled.div`
     margin-top: 100px;
 `
 
-export const FormContainer = styled.form`
+export const FormContainer = styled(Form)`
 
 `;
 

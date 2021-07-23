@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { FormContainer, ContainerButton} from './styles';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -8,9 +8,7 @@ import { Container } from './styles';
 import api from '../../services/api';
 
 const SingnUp = props => {
-  
-  //getProduct();
-  const initialValues = {
+    const initialValues = {
     name: '',
     email: '',
     password: '',
@@ -26,27 +24,24 @@ const SingnUp = props => {
     password: Yup.string()
       .required('Senha obrigatória')
       .min(6, 'Senha muito curta, precisa ter pelo menos 6 caracteres'),
-    confirmarPassword: Yup.string().oneOf(
+    confirmPassword: Yup.string().oneOf(
       [Yup.ref('password'), null],
       'Senhas devem ser iguais',
     ),
   });
 
-
-  const getProduct = async () => {
-    const response = await api.post("/Users",{
-      name: "Gabriela",
-      email: "Gabriela@gmail.com",
-      password: "123456",
-    });
-    console.log(response);
-  };
-
-  const onSubmit = async (values, resetForm) => {
-    getProduct();
+  const onSubmit = async (values) => {
     console.log('SingnUp')
-    resetForm();
-    props.history.push('/home');
+    const response = await api.post('/user', {
+     email: values.email,
+     name: values.name,
+     password: values.password,
+   });
+   console.log(response);
+
+   if (response.status === 201) {
+     props.history.push('/home');
+   } 
     
   };
 
@@ -77,12 +72,12 @@ const SingnUp = props => {
               placeholder="Senha"
               />
               <Input
-              name='confirmarPassword'
+              name='confirmPassword'
               type='password'
               placeholder="Confirmar Password"
               />
               <ContainerButton>
-                <Button Button type='submit' >Cadastrar</Button>
+                <Button type='submit' >Cadastrar</Button>
               </ContainerButton>
               
           </FormContainer>

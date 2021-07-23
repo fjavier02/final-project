@@ -6,7 +6,7 @@ import api from '../../services/api';
 import { Input, Button } from '../../components';
 
 const SingnIn = (props) => {
-
+  console.log("sign in")
   const initialValues = {
     email: '',
     password: '',
@@ -21,7 +21,7 @@ const SingnIn = (props) => {
 
   const onSubmit = async (values, { resetForm }) => {
     console.log('SingnIn')
-    /* const response = await api.post('/Users', {
+     const response = await api.post('/user', {
       email: values.email,
       password: values.password,
     });
@@ -30,7 +30,7 @@ const SingnIn = (props) => {
     if (response.status === 201) {
       resetForm();
       props.history.push('/home');
-    } */
+    } 
   };
 
   return (
